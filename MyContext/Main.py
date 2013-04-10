@@ -8,6 +8,11 @@ class Main(Page):
         return 'My Sample Context'
 
     def writeContent(self):
+        self.request()._secretstuff = "Yep, this is pretty secret!"
+        self.forward('Main.psp')
+
+    def dummy(self):
+
         self.writeln('<h1>Welcome to Webware for Python!</h1>')
         self.writeln('''
         <p>This is a sample context generated for you and has purposly been kept

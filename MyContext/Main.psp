@@ -1,0 +1,7 @@
+<html>
+<head>
+</head>
+<body>
+<h1>This is my python thingy.</h1>
+<p>This is some secret data: <%=self.request()._secretstuff%></p>
+</body>
