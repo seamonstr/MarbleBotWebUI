@@ -1,5 +1,7 @@
 # this file contains the main entrypoint to talking to the bot 
-# over its serial link.
+# over its serial link. This class is invoked from botthread.py, which is the 
+# application's entrypoint.
+
 from time import sleep
 
 class MarbleDropException(Exception):
@@ -25,7 +27,9 @@ class Marblebot:
 
         If a time out or an error occurs, throws a MarbleDropException.'''
         
-        if _err is not None:a
+        print ">> thread: Dropping a marble."
+
+        if self._err is not None:
             raise MarbleDropException("Bot has an issue; please correct "\
                                       "and reset first.")
 
@@ -37,21 +41,22 @@ class Marblebot:
         try:
             # Not yet implemented.  Just sleep for a bit.
             sleep(5)
-            # Throw an error one time in 5.
-            _errThrowInx += 1
-            if _errThrowInx % 5 == 0:
+            # Throw an error on the 5th time
+            self._errThrowInx += 1
+            if self._errThrowInx == 5:
+                print ">> thread: throwing an error!"
                 raise MarbleDropException("Error because the moon is in the "\
                                           "wrong quadrant!")
         except MarbleDropException as e:
-            _err = e.value
+            self._err = e.value
             raise
 
     def error(self):
         '''Return the last error returned by the bot.'''
-        return _err
+        return self._err
 
     def reset(self):
-        _err = None
+        self._err = None
 
     def disconnect(self):
         ''' Disconnect from the serial port. '''

@@ -6,6 +6,7 @@ import marblebot
 SERIAL_DEVICE="/dev/somethingorother"
 
 class BotThread(Thread):
+    _error = None
     def __init__(self, queue):
         Thread.__init__(self)
         self._queue = queue
@@ -13,20 +14,26 @@ class BotThread(Thread):
         self._bot = marblebot.Marblebot(SERIAL_DEVICE)
 
     def run(self):
+        print ">> thread: going"
         try:
           while True:
               if len(self._queue) > 0:
                   try:
-                      self._bot.dropMarble(_queue[0][0], _queue[0][1])
+                      self._bot.dropMarble(self._queue[0][0], self._queue[0][1])
                       # Only remove from the queue if this was successful (
                       # ie. didn't throw any exceptions.)
-                      self._queue.remove(_queue[0])
+                      self._queue.remove(self._queue[0])
+                      print ">> thread: queue count now %d." % len(self._queue)
                   except marblebot.MarbleDropException as e:
                       self._error = e.value
+                      print ">> thread: error set '%s'" % self._error
                       # Exit the while loop and exit the thread
                       break
+              else:
+                  # Nothing in the queue - sleep
+                  sleep(20)
         finally:
-            _bot.disconnect()
+            self._bot.disconnect()
 
 class MarblebotThread:
    """A thread that manages a queue of marble drop operations. It processes
@@ -34,13 +41,18 @@ class MarblebotThread:
       exits and needs restarting.
    """
    _queue = []
+   _botThread = None
 
    def start(self):
        """
        Start the thread.  asserts if the thread is already running.
        """
+       assert self._botThread is None or not self.running(), \
+           "Trying to start botthread when it's already running."
+
        self._botThread = BotThread(self._queue)
        self._botThread.start()
+       print ">> Bot thread started."
 
    def running(self):
        """ 
@@ -65,3 +77,19 @@ class MarblebotThread:
 
    def queueLength(self):
        return len(self._queue)
+
+def init():
+    global _mblBotThread
+    _mblBotThread = MarblebotThread()
+    _mblBotThread.start()
+
+# Called by the app once a person has fixed the issue.
+def reset():
+    _mblBotThread.start()
+
+def marbleBot():
+    return _mblBotThread
+
+# Get the thread going...
+init()
+

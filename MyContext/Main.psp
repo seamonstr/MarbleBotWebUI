@@ -1,7 +1,94 @@
-<html>
-<head>
-</head>
-<body>
-<h1>This is my python thingy.</h1>
-<p>This is some secret data: <%=self.request()._secretstuff%></p>
-</body>
+<%@page indentType="braces"%>
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Marblebot</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+    </head>
+    <body>
+
+        <div id="main">
+<%
+if self.request().botError is not None:{
+%>
+<div>Bot error: </div>
+            <div class="error_box">
+                <p><%=self.request().botError%></p>
+            </div>
+<%
+}
+%>
+            <h2 class="separator">Who are you?</h2>
+            <div id="first_step">
+                <ul>
+<%
+for inx in self.request().people.keys(): {
+   personTuple = self.request().people[inx]
+%>
+ <li data-value="<%=inx%>"><img src="<%=personTuple[1]%>" alt="<%=personTuple[0]%>" title="<%=personTuple[0]%>" /></li>
+<%
+}
+%>
+                </ul>
+            </div>
+            <h2 class="separator">What are you working on?</h2>
+            <div id="second_step">
+                <table>
+                    <tbody>
+<%
+count = 0
+for inx in self.request().stories.keys(): {
+   if count % 5 == 0:{      
+%>
+                        <tr id="morning">
+<%
+   }
+%>
+                           <td><div class="cell" data-value="<%=inx%>"><p><%=self.request().stories[inx]%></p></div></td>
+<%
+   if count % 5 == 4:{
+%>
+                        </tr>
+<%
+   }
+   count += 1
+}
+
+# Close off the last tr if we haven't already
+if count % 5 != 4:{
+%>
+                        </tr>
+<%
+}
+%>
+                    </tbody>
+                </table>
+            </div>
+            <form id="hidden_form" action="marble" name="marble">
+                <label>
+                    <input type="hidden" name="person" value="0" />
+                </label>
+                <label class="story1">
+                    <input type="hidden" name="story1" value="0">
+                </label>
+                <label class="story2">
+                    <input type="hidden" name="story2" value="0">
+
+                </label>
+                <button class="button">Submit</button>
+            </form>
+
+        </div>
+
+        <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script-->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

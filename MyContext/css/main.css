@@ -1,0 +1,377 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300&subset=latin,cyrillic);
+
+@font-face {
+    font-family: 'LeagueGothicRegular';
+    src: url('fonts/LeagueGothic-Regular-webfont.eot');
+    src: url('fonts/LeagueGothic-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/LeagueGothic-Regular-webfont.woff') format('woff'),
+         url('fonts/LeagueGothic-Regular-webfont.ttf') format('truetype'),
+         url('fonts/LeagueGothic-Regular-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    background: #fff;
+}
+
+#main{
+    width: 945px;
+    margin: 0 auto;
+    padding: 10px 0  40px;
+}
+
+#main p{
+    margin: 0 0 15px 0;
+}
+
+
+
+#first_step{
+    margin-bottom: 6px;
+}
+
+#second_step{
+    margin-bottom: 20px;
+}
+
+
+
+#first_step ul{
+    text-align: center;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#first_step ul li{
+    display: inline-block;
+    list-style: none;
+    border: 4px solid #eee;
+    margin-right: 20px;
+    background: #fff;
+}
+
+#first_step ul li.active{
+    border-color: rgb(162, 162, 162);
+}
+
+
+
+.cell{
+    position: relative;
+    padding: 10px;
+    width: 170px;
+    height: 170px;
+    border: 2px solid #eee;
+    margin: 0 5px 5px 0;
+    overflow: hidden;
+}
+
+.cell:hover,
+#first_step ul li:hover{
+    border-color: #6090ff !important;
+}
+
+
+.separator {
+    font-family: LeagueGothicRegular;
+    text-align: center;
+    font-weight: normal;
+    font-size: 3em;
+    color: #F16529;
+    margin: 50px 0;
+}
+
+.separator:before, 
+.separator:after {
+    width: 31%;
+    height: 4px;
+    background: #eee;
+    content: "";
+    margin-top: 14px;
+    display: block;
+}
+.separator:before{
+    float: left;
+}
+
+.separator:after{
+    float: right;
+}
+
+#main h2{
+    font-size: 45px;
+    line-height: 1;
+}
+
+.button{
+    font-family: LeagueGothicRegular;
+    display: inline-block;
+    width: 250px;
+    height: 50px;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    color: #fff;
+    background: #6090ff;
+    font-size: 24px;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tick{
+    position: absolute;
+    right: 31px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    padding: 5px;
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 1%, rgba(255,255,255,0.93) 8%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,rgba(255,255,255,1)), color-stop(8%,rgba(255,255,255,0.93)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 1%,rgba(255,255,255,0.93) 8%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 1%,rgba(255,255,255,0.93) 8%,rgba(255,255,255,0) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 1%,rgba(255,255,255,0.93) 8%,rgba(255,255,255,0) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 1%,rgba(255,255,255,0.93) 8%,rgba(255,255,255,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+}
+
+
+.tick:last-child{
+    right: 10px;
+}
+
+#hidden_form label{
+    display: none;
+}
+
+.error_box{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 905px;
+    padding: 20px 20px 5px;
+    font-size: 16px;
+    background: rgba(255, 136, 136, 0.43);
+    color: rgb(179, 61, 61);
+}
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
