@@ -2,38 +2,33 @@ from threading import Thread
 from time import sleep
 import marblebot
 
-# The serial device to use to talk to the bot
-SERIAL_DEVICE="/dev/somethingorother"
-
 class BotThread(Thread):
     _error = None
     def __init__(self, queue):
         Thread.__init__(self)
         self._queue = queue
         self.daemon = True
-        self._bot = marblebot.Marblebot(SERIAL_DEVICE)
+        self._bot = marblebot.Marblebot()
 
     def run(self):
         print ">> thread: going"
         try:
-          while True:
-              if len(self._queue) > 0:
-                  try:
-                      self._bot.dropMarble(self._queue[0][0], self._queue[0][1])
-                      # Only remove from the queue if this was successful (
-                      # ie. didn't throw any exceptions.)
-                      self._queue.remove(self._queue[0])
-                      print ">> thread: queue count now %d." % len(self._queue)
-                  except marblebot.MarbleDropException as e:
-                      self._error = e.value
-                      print ">> thread: error set '%s'" % self._error
-                      # Exit the while loop and exit the thread
-                      break
-              else:
-                  # Nothing in the queue - sleep
-                  sleep(20)
-        finally:
-            self._bot.disconnect()
+            self._bot.connect()
+            try:
+                while True:
+                    if len(self._queue) > 0:
+                        self._bot.dropMarble(self._queue[0][0], self._queue[0][1])
+                        # Only remove from the queue if this was successful
+                        # (ie. didn't throw any exceptions.)
+                        self._queue.remove(self._queue[0])
+                        print ">> thread: queue count now %d." % len(self._queue)
+                    else:
+                        # Nothing in the queue - sleep
+                        sleep(2)
+            finally:
+                self._bot.disconnect()
+        except:
+            self._error = self._bot.error()
 
 class MarblebotThread:
    """A thread that manages a queue of marble drop operations. It processes
